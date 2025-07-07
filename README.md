@@ -175,5 +175,6 @@ This project is created and maintained by Owen Lin. Feel free to use this code f
 
 ## 🎵 Latest Updates
 
+- **v1.1.1**: Fixed playlist modal positioning and enhanced UI responsiveness
 - **v1.1.0**: Enhanced UI animations and improved user experience
 - **v1.0.0**: Initial release with core music recommendation features
