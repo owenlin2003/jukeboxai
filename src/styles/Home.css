@@ -183,17 +183,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2rem;
   z-index: 10;
   position: relative;
   gap: 2rem;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 /* Input section */
 .input-section {
   width: 100%;
   max-width: 600px;
+  transition: all 0.3s ease;
+}
+
+.input-section.has-results {
+  max-width: 500px;
 }
 
 .input-card {
@@ -332,6 +339,8 @@
 .results-section {
   width: 100%;
   max-width: 800px;
+  animation: slideInUp 0.6s ease-out;
+  margin-top: 1rem;
 }
 
 .results-card {
@@ -380,6 +389,7 @@
   
   .home-content {
     padding: 1rem;
+    gap: 1rem;
   }
   
   .input-card,
@@ -393,5 +403,17 @@
   
   .input-title {
     font-size: 1.1rem !important;
+  }
+  
+  .input-section {
+    max-width: 100% !important;
+  }
+  
+  .input-section.has-results {
+    max-width: 100% !important;
+  }
+  
+  .results-section {
+    max-width: 100% !important;
   }
 }

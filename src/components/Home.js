@@ -67,6 +67,13 @@ function Home({ token }) {
             "\n\nHere are some similar songs:\n\n" +
             getSongString(parsedSongs)
         );
+        // Scroll to results after a short delay
+        setTimeout(() => {
+          const resultsSection = document.querySelector('.results-section');
+          if (resultsSection) {
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 500);
       } else {
         setInputValue("No songs found");
       }
@@ -119,9 +126,9 @@ function Home({ token }) {
         </Button>
       </div>
 
-      {/* Main content */}
-      <div className="home-content">
-        <div className="input-section">
+              {/* Main content */}
+        <div className="home-content">
+          <div className={`input-section ${generatedSongs.length > 0 ? 'has-results' : ''}`}>
           <Paper elevation={0} className="input-card">
             <div className="input-header">
               <AutoAwesomeIcon className="input-icon" />
