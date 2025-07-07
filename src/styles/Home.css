@@ -1,0 +1,70 @@
+.Home {
+  width: 100vw;
+  height: 100vh;
+  /* background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(26, 166, 39, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  ); */
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Home textarea {
+  /* border-radius: 20px; */
+  border: none;
+  outline-width: 0;
+  /* padding: 20px; */
+  /* margin-bottom: 2rem; */
+}
+/* 
+.Home button {
+  width: 35%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  text-decoration: none;
+  border: none;
+  color: #fff;
+  background-color: black;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.GeneratedSongs {
+  margin-top: 2rem;
+  width: 90vw;
+  height: 30vh;
+  color: #000;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.song {
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  width: 40vw;
+  height: 20vh;
+  color: #fff;
+  margin-bottom: 1rem;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+} */

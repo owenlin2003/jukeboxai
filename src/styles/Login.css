@@ -1,0 +1,337 @@
+/* Modern Login Page Styling */
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1DB954 0%, #191414 50%, #1DB954 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Floating animated elements */
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(29, 185, 84, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-1 {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+  animation: float 8s ease-in-out infinite, pulse 4s ease-in-out infinite;
+}
+
+.circle-2 {
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+  animation: float 10s ease-in-out infinite, pulse 6s ease-in-out infinite;
+}
+
+.circle-3 {
+  width: 60px;
+  height: 60px;
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+  animation: float 7s ease-in-out infinite, pulse 5s ease-in-out infinite;
+}
+
+.circle-4 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  right: 30%;
+  animation-delay: 1s;
+  animation: float 9s ease-in-out infinite, pulse 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  25% { transform: translateY(-15px) rotate(90deg) scale(1.1); }
+  50% { transform: translateY(-25px) rotate(180deg) scale(0.9); }
+  75% { transform: translateY(-10px) rotate(270deg) scale(1.05); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Dynamic background gradient */
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1DB954 0%, #191414 50%, #1DB954 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main content */
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 500px;
+  padding: 2rem;
+  z-index: 10;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Brand section */
+.brand-section {
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 0.8rem;
+}
+
+.logo-icon {
+  font-size: 2.5rem !important;
+  color: #1DB954;
+  filter: drop-shadow(0 4px 8px rgba(29, 185, 84, 0.3));
+  animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { filter: drop-shadow(0 4px 8px rgba(29, 185, 84, 0.3)); }
+  50% { filter: drop-shadow(0 6px 16px rgba(29, 185, 84, 0.6)); }
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-name {
+  color: white !important;
+  font-weight: 800 !important;
+  font-size: 2rem !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0%, 100% { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+  50% { text-shadow: 0 2px 8px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3); }
+}
+
+.brand-tagline {
+  color: #1DB954 !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  margin: 0 !important;
+  letter-spacing: 0.1em;
+}
+
+.hero-title {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.8rem !important;
+  margin: 0.3rem 0 !important;
+  letter-spacing: -0.01em;
+}
+
+.hero-title.highlight {
+  background: linear-gradient(45deg, #1DB954, #1ed760);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800 !important;
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 1rem !important;
+  margin-top: 0.8rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em;
+}
+
+.creator-text {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.9rem !important;
+  margin-top: 0.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+/* Login section */
+.login-section {
+  width: 100%;
+  max-width: 400px;
+  flex-shrink: 0;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+.login-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.login-title {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.login-description {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 1rem !important;
+  margin-bottom: 2rem !important;
+  line-height: 1.6;
+}
+
+/* Spotify login button */
+.spotify-login-btn {
+  background: linear-gradient(45deg, #1DB954, #1ed760) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  padding: 1rem 2rem !important;
+  border-radius: 50px !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 20px rgba(29, 185, 84, 0.3) !important;
+  transition: all 0.3s ease !important;
+  width: 100% !important;
+  margin-bottom: 1.5rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotify-login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.spotify-login-btn:hover::before {
+  left: 100%;
+}
+
+.spotify-login-btn:hover {
+  background: linear-gradient(45deg, #1ed760, #1DB954) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 15px 30px rgba(29, 185, 84, 0.5) !important;
+}
+
+.spotify-login-btn:disabled {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: none !important;
+}
+
+.login-note {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4;
+}
+
+/* Footer */
+.footer {
+  margin-top: 2rem;
+  flex-shrink: 0;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .login-content {
+    padding: 1rem;
+  }
+  
+  .brand-name {
+    font-size: 2rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .login-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 1.8rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .login-card {
+    padding: 1.5rem;
+  }
+}
