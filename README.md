@@ -170,3 +170,10 @@ This project is created and maintained by Owen Lin. Feel free to use this code f
 **Created with ❤️ by Owen Lin**
 
 *Building the future of music discovery, one recommendation at a time.*
+
+---
+
+## 🎵 Latest Updates
+
+- **v1.1.0**: Enhanced UI animations and improved user experience
+- **v1.0.0**: Initial release with core music recommendation features
