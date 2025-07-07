@@ -133,91 +133,109 @@ function Playlist({ token, songs }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: "100%",
-          height: "auto",
+          padding: "1rem",
+          zIndex: 9999,
         }}
       >
         <Paper
-          elevation={3}
+          elevation={24}
           sx={{
             display: "flex",
             flexDirection: "column",
-            width: ["90%", "50%", "50%"],
-            height: "auto",
-            minHeight: "50%",
-            padding: "1rem",
+            width: { xs: "95%", sm: "80%", md: "60%" },
+            maxWidth: "800px",
+            maxHeight: "90vh",
+            overflow: "auto",
+            padding: "2rem",
+            background: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(20px)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            borderRadius: "24px",
+            boxShadow: "0 25px 50px rgba(0, 0, 0, 0.25)",
           }}
         >
           {loading ? (
-            <CircularProgress />
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "200px" }}>
+              <CircularProgress size={60} sx={{ color: "#1DB954" }} />
+            </Box>
           ) : (
-            <Box>
-              <Typography
-                variant="h3"
-                sx={{
-                  textAlign: "center",
-                }}
-              >
-                Create Playlist
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                  alignItems: "center",
-                  my: "1rem",
-                }}
-              >
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              <Box sx={{ textAlign: "center", mb: "1rem" }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 700,
+                    color: "#1DB954",
+                    mb: "0.5rem",
+                  }}
+                >
+                  🎵 Create Spotify Playlist
+                </Typography>
+                <Typography variant="body2" sx={{ color: "rgba(0,0,0,0.6)" }}>
+                  Give your playlist a name and description
+                </Typography>
+              </Box>
+              
+              <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: "1rem" }}>
                 <TextField
                   required
-                  id="outlined-basic"
                   label="Playlist Name"
                   variant="outlined"
                   value={playlistName}
                   onChange={(e) => setPlaylistName(e.target.value)}
+                  sx={{ flex: 1 }}
+                  fullWidth
                 />
                 <TextField
                   required
-                  id="outlined-basic"
                   label="Playlist Description"
                   variant="outlined"
-                  sx={{
-                    width: "50%",
-                  }}
                   value={playlistDescription}
                   onChange={(e) => setPlaylistDescription(e.target.value)}
+                  sx={{ flex: 1 }}
+                  fullWidth
                 />
               </Box>
-              <Box>
-                {tracks.map((track) => (
-                  <SongRow track={track} />
-                ))}
+              
+              <Box sx={{ mt: "1rem" }}>
+                <Typography variant="h6" sx={{ mb: "1rem", color: "#1DB954", fontWeight: 600 }}>
+                  Tracks ({tracks.length})
+                </Typography>
+                <Box sx={{ maxHeight: "300px", overflow: "auto", border: "1px solid #e0e0e0", borderRadius: "12px", p: "1rem" }}>
+                  {tracks.map((track, index) => (
+                    <SongRow key={index} track={track} />
+                  ))}
+                </Box>
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  mt: "2rem",
-                }}
-              >
+              
+              <Box sx={{ display: "flex", gap: "1rem", justifyContent: "flex-end", mt: "1rem" }}>
                 <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSubmit}
-                  sx={{ mb: "1rem", backgroundColor: "green" }}
-                >
-                  Create
-                </Button>
-                <Button
-                  variant="contained"
+                  variant="outlined"
                   onClick={handleClose}
                   sx={{
-                    backgroundColor: "red",
+                    borderColor: "#666",
+                    color: "#666",
+                    "&:hover": {
+                      borderColor: "#333",
+                      color: "#333",
+                    },
                   }}
                 >
                   Cancel
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  sx={{
+                    background: "linear-gradient(45deg, #1DB954, #1ed760)",
+                    color: "white",
+                    fontWeight: 600,
+                    "&:hover": {
+                      background: "linear-gradient(45deg, #1ed760, #1DB954)",
+                    },
+                  }}
+                >
+                  Create Playlist
                 </Button>
               </Box>
             </Box>
