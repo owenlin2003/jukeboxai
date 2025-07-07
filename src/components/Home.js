@@ -167,17 +167,54 @@ function Home({ token }) {
         {/* Results section */}
         <div className="results-section">
           {generatedSongs.length > 0 && (
-            <Paper elevation={0} className="results-card">
-              <div className="results-header">
-                <Typography variant="h6" className="results-title">
-                  🎵 Your Generated Playlist
-                </Typography>
-                <Typography variant="body2" className="results-subtitle">
-                  {generatedSongs.length} songs ready for you
-                </Typography>
+            <>
+              <Paper elevation={0} className="results-card">
+                <div className="results-header">
+                  <Typography variant="h6" className="results-title">
+                    🎵 Your Generated Playlist
+                  </Typography>
+                  <Typography variant="body2" className="results-subtitle">
+                    {generatedSongs.length} songs ready for you
+                  </Typography>
+                </div>
+                <Playlist token={token} songs={generatedSongs} />
+              </Paper>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  className="create-another-btn"
+                  onClick={() => {
+                    setInputValue("");
+                    setGeneratedSongs([]);
+                    setTimeout(() => {
+                      const inputSection = document.querySelector('.input-section');
+                      if (inputSection) {
+                        inputSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }, 200);
+                  }}
+                  sx={{
+                    borderColor: '#1DB954',
+                    color: '#1DB954',
+                    fontWeight: 700,
+                    borderRadius: '50px',
+                    px: '2rem',
+                    py: '0.7rem',
+                    fontSize: '1rem',
+                    textTransform: 'none',
+                    transition: 'all 0.2s',
+                    '&:hover': {
+                      background: 'linear-gradient(45deg, #1DB954, #1ed760)',
+                      color: 'white',
+                      borderColor: '#1ed760',
+                    },
+                  }}
+                >
+                  Create Another
+                </Button>
               </div>
-              <Playlist token={token} songs={generatedSongs} />
-            </Paper>
+            </>
           )}
         </div>
       </div>
