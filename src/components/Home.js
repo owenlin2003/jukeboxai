@@ -4,11 +4,13 @@ import "../styles/Home.css";
 // import OpenAI from "openai";  // ✅ new v4 way
 
 import Playlist from "./Playlist";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Paper } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 // Backend API base URL
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5002';
@@ -78,127 +80,100 @@ function Home({ token }) {
   
 
   return (
-    <div className="Home">
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <QueueMusicIcon
-          sx={{
-            fontSize: "2rem",
-            color: "white",
-          }}
-        />
-        <Typography
-          sx={{
-            fontSize: "1rem",
-            color: "white",
-            fontWeight: "bold",
-          }}
-        >
-          Jukebox AI by Owen Lin
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          width: "100vw",
-          height: "80vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            height: "30vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            mb: "2rem",
+    <div className="home-container">
+      {/* Animated background elements */}
+      <div className="floating-elements">
+        <div className="floating-circle circle-1"></div>
+        <div className="floating-circle circle-2"></div>
+        <div className="floating-circle circle-3"></div>
+        <div className="floating-circle circle-4"></div>
+        <div className="floating-music-note note-1">♪</div>
+        <div className="floating-music-note note-2">♫</div>
+        <div className="floating-music-note note-3">♬</div>
+      </div>
+
+      {/* Header */}
+      <div className="home-header">
+        <div className="header-content">
+          <div className="logo-section">
+            <MusicNoteIcon className="header-icon" />
+            <Typography variant="h5" className="header-title">
+              Jukebox AI
+            </Typography>
+          </div>
+          <Typography variant="body2" className="header-subtitle">
+            by Owen Lin
+          </Typography>
+        </div>
+        <Button
+          variant="contained"
+          className="logout-btn"
+          onClick={() => {
+            localStorage.removeItem('spotify_access_token');
+            localStorage.removeItem('spotify_refresh_token');
+            localStorage.removeItem('spotify_expires_in');
+            window.location.href = '/';
           }}
         >
-          <TextField
-            id="outlined-multiline-flexible"
-            label="Playlist AI"
-            multiline
-            maxRows={10}
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="let us know some of your favorite songs and we'll generate some similar ones for you!"
-            sx={{
-              width: "75%",
-              color: "white",
-              // backgroundColor: "white",
-              // borderRadius: "15px",
-            }}
-            InputLabelProps={{
-              style: {
-                color: "orange",
-                fontWeight: "bold",
-              },
-            }}
-          />
-        </Box>
-        <Box
-          sx={{
-            width: "[90%, 70%, 50%]",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mb: "2rem",
-          }}
-        >
-          <LoadingButton
-            variant="contained"
-            sx={{
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "15px",
-              mr: "2rem",
-            }}
-            onClick={handleButtonClick}
-            // stop loading after 10 seconds
-            loading={clicked}
-          >
-            {" "}
-            Generate Songs
-          </LoadingButton>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "red",
-              color: "white",
-              "&:hover": {
-                backgroundColor: "red",
-                color: "white",
-              },
-              borderRadius: "15px",
-              // mt: "2rem",
-            }}
-            onClick={() => {
-              // Clear stored tokens
-              localStorage.removeItem('spotify_access_token');
-              localStorage.removeItem('spotify_refresh_token');
-              localStorage.removeItem('spotify_expires_in');
-              // Redirect to login page
-              window.location.href = '/';
-            }}
-          >
-            <ExitToAppIcon />
-          </Button>
-        </Box>
-        <Box>
+          <ExitToAppIcon />
+        </Button>
+      </div>
+
+      {/* Main content */}
+      <div className="home-content">
+        <div className="input-section">
+          <Paper elevation={0} className="input-card">
+            <div className="input-header">
+              <AutoAwesomeIcon className="input-icon" />
+              <Typography variant="h6" className="input-title">
+                Create Your Perfect Playlist
+              </Typography>
+            </div>
+            
+            <Typography variant="body2" className="input-subtitle">
+              Tell us about your mood, favorite songs, or what you're feeling today
+            </Typography>
+
+            <TextField
+              id="outlined-multiline-flexible"
+              multiline
+              maxRows={6}
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="e.g., 'I'm feeling energetic and love rock music' or 'Songs like Bohemian Rhapsody and Hotel California'"
+              className="dynamic-input"
+              variant="outlined"
+            />
+
+            <LoadingButton
+              variant="contained"
+              className="generate-btn"
+              onClick={handleButtonClick}
+              loading={clicked}
+              startIcon={!clicked && <QueueMusicIcon />}
+            >
+              {clicked ? 'Creating Magic...' : 'Generate Playlist'}
+            </LoadingButton>
+          </Paper>
+        </div>
+
+        {/* Results section */}
+        <div className="results-section">
           {generatedSongs.length > 0 && (
-            <Playlist token={token} songs={generatedSongs} />
+            <Paper elevation={0} className="results-card">
+              <div className="results-header">
+                <Typography variant="h6" className="results-title">
+                  🎵 Your Generated Playlist
+                </Typography>
+                <Typography variant="body2" className="results-subtitle">
+                  {generatedSongs.length} songs ready for you
+                </Typography>
+              </div>
+              <Playlist token={token} songs={generatedSongs} />
+            </Paper>
           )}
-        </Box>
-      </Box>
+        </div>
+      </div>
     </div>
   );
 }

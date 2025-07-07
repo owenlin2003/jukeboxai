@@ -92,21 +92,39 @@ function Playlist({ token, songs }) {
         variant="contained"
         onClick={handleOpen}
         disabled={playlistCreated}
+        className="create-playlist-btn"
         sx={{
-          backgroundColor: "green",
+          background: playlistCreated 
+            ? "rgba(255, 255, 255, 0.2)" 
+            : "linear-gradient(45deg, #1DB954, #1ed760)",
           color: "white",
+          fontWeight: 700,
+          fontSize: "1rem",
+          padding: "0.8rem 1.5rem",
+          borderRadius: "50px",
+          textTransform: "none",
+          letterSpacing: "0.02em",
+          boxShadow: playlistCreated 
+            ? "none" 
+            : "0 8px 20px rgba(29, 185, 84, 0.3)",
+          transition: "all 0.3s ease",
           "&:hover": {
-            backgroundColor: "black",
-            color: "white",
+            background: playlistCreated 
+              ? "rgba(255, 255, 255, 0.2)" 
+              : "linear-gradient(45deg, #1ed760, #1DB954)",
+            transform: playlistCreated ? "none" : "translateY(-2px) scale(1.02)",
+            boxShadow: playlistCreated 
+              ? "none" 
+              : "0 15px 30px rgba(29, 185, 84, 0.5)",
           },
           "&:disabled": {
-            backgroundColor: "gray",
-            color: "white",
+            background: "rgba(255, 255, 255, 0.2)",
+            color: "rgba(255, 255, 255, 0.6)",
+            boxShadow: "none",
           },
-          borderRadius: "15px",
         }}
       >
-        {`${playlistCreated ? "Playlist Created" : "Create Playlist"}`}
+        {playlistCreated ? "✅ Playlist Created" : "🎵 Create Spotify Playlist"}
       </Button>
       <Modal
         open={open}
